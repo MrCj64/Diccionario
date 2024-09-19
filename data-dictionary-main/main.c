@@ -2,7 +2,7 @@
 
 int main(int argc, char** argv) {
 
-    initializeDataDictionary();
+    initializeDataDictionary("dictionary.dat");
 
     return 0;
 }

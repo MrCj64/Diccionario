@@ -1,6 +1,6 @@
 #include "dictionary.h"
 
-void initializeDataDictionary(const char *dictionaryNom) {
+bool initializeDataDictionary(const char *dictionaryNom) {
     long apuntador= EMPTY_POINTER;
     
     printf("Initializing Data Dictionary...\n");
@@ -10,6 +10,6 @@ void initializeDataDictionary(const char *dictionaryNom) {
     fwrite(&apuntador,sizeof(apuntador),1,dictionary);
 
     long currentDir = ftell(dictionary);
-
+return true;
     INVESTIGAR TERMINO Magic Numbers
 }

@@ -5,7 +5,7 @@ int main(int argc, char** argv) {
     char num[50];
     
     printf("Enter a Data Dictionary Nom: ");
-    gets(num);
+    fgets(num);
     
     initializeDataDictionary(num);
 

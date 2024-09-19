@@ -10,6 +10,8 @@ int initializeDataDictionary(const char *dictionaryNom) {
     fwrite(&apuntador,sizeof(apuntador),1,dictionary);
 
     long currentDir = ftell(dictionary);
+    
 return EXIT_SUCCES;
+   
     INVESTIGAR TERMINO Magic Numbers
 }

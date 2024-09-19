@@ -1,7 +1,7 @@
 #include "dictionary.h"
 
 void initializeDataDictionary(const char *dictionaryNom) {
-    long apuntador= -1;
+    long apuntador= EMPTY_POINTER;
     
     printf("Initializing Data Dictionary...\n");
 

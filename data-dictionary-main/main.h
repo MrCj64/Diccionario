@@ -1,7 +1,24 @@
-#ifndef MAIN_H
-#define MAIN_H
-
 #include <stdio.h>
-#include "dictionary.h"
+#include <stdlib.h>
+#include <string.h>
 
-#endif
+#define MAX_LINE_LENGTH 100
+
+typedef struct NODE
+{
+  char *ruleIdentifier;
+  char *productions;
+  struct Node *next;
+} Node;
+
+Node* createNode(const char *ruleIdentifier, const char *production);
+void appendNode(NOde **head, const char *ruleIdentifier, const char *production);
+void freeLinkedList(Node *head);
+Node* createLinkedList(FILE *file);
+void printList(NOde *head);
+
+void slpitLine(const char *line, char *ruleIdentifier);
+
+Node* findNode(Node *head, const char *ruleIdentifier);
+void appendProduction(Node *node, const char *production);
+void appendOrUpdateNode(Node **head, const char *ruleIdentifier, const char *ruleProduction);

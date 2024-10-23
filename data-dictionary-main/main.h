@@ -4,7 +4,7 @@
 
 #define MAX_LINE_LENGTH 100
 
-typedef struct NODE
+typedef struct Node
 {
   char *ruleIdentifier;
   char *productions;

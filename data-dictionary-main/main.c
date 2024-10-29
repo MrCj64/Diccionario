@@ -172,6 +172,7 @@ int main()
     Node *head=createLinkedList(file);
     fclose(file);
     printList(head);
+    firstCycle(head);
     freeLinkedList(head);
     return 0;
 }

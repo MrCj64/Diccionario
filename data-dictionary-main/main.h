@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
 #define MAX_LINE_LENGTH 100
 
@@ -22,3 +23,5 @@ void slpitLine(const char *line, char *ruleIdentifier);
 Node* findNode(Node *head, const char *ruleIdentifier);
 void appendProduction(Node *node, const char *production);
 void appendOrUpdateNode(Node **head, const char *ruleIdentifier, const char *ruleProduction);
+
+void firstCycle(Node *head);

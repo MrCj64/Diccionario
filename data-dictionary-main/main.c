@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
 Node* createNode(const char *ruleIdentifier, const char *production)
 {
@@ -106,6 +107,58 @@ void printList(Node *head)
             printf("%s -> %s\n",current->ruleIdentifier,current->production);
             current=current->next;
         }
+}
+
+void firstCycle(Node *head)
+{
+    Node *current = head;
+    printf("\n");
+    printf("First Cycle\n");
+    while (current)
+    {
+        char *token;
+        char *productionsCopy = strdup(current->productions);
+        char *similarProductions = NULL;
+        char *otherProductions = NULL;
+        int similarCount = 0;
+
+        token = strtok(productionsCopy, " | ");
+        while (token != NULL)
+        {
+            if (strstr(token,current->ruleIdentifier)!=NULL&&islower(token[0]))
+            {
+                if (similarProductions==NULL)
+                {
+                    similarProductions=strdup(token);
+                }
+                similarCount++;
+            }
+            else
+            {
+                if(otherProductions==NULL)
+                    otherProductions=strdup(token);
+                else
+                {
+                    size_t newSize=strlen(otherProductions)+strlen(token)+4;
+                    otherProductions=realloc(otherProductions,newSize);
+                    strcat(otherProductions, " | ");
+                    strcat(otherProductions, token);
+                }
+            }
+            token=strtok(NULL," | ");
+        }
+
+        printf("%s -> ",current->ruleIdentifier);
+        if (similarCount>0&&similarProductions!=NULL)
+            printf("{%s}",similarProductions);
+        if (otherProductions!=NULL)
+            printf(" %s",otherProductions);
+        printf("\n");
+        free(productionsCopy);
+        free(similarProductions);
+        free(otherProductions);
+        current=current->next;
+    }
 }
 
 int main() 
